@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Alarm System</title>
+</head>
+<body>
+
+    <audio id="myAudio">
+        <source src="/alarm.mp3" type="audio">
+    </audio>
+    <div class="container">
+        <div class="current_time">
+
+        </div>
+        <div class="alarm_time">
+
+        </div>
+        <div class="alarm">
+            Not Yet!
+        </div>
+    </div>
+
+    <script>
+        var a_hour=window.prompt("Enter the Hour:")
+        var a_minute=window.prompt("Enter the Minute: ")
+        var a_seconds=window.prompt("Enter the Seconds:")
+
+        function Current_Date(){
+            const d=new Date()
+            let hours=d.getHours();
+            let minute=d.getMinutes();
+            let seconds=d.getSeconds();
+            
+            document.querySelector('.current_time').textContent=hours+":"+minute+":"+seconds
+            document.querySelector('.alarm_time').textContent=a_hour+":"+a_minute+":"+a_seconds
+            // var music = new type('alarm.mp3');
+            if ((hours==a_hour) && (minute==a_minute) && (seconds==a_seconds))  {
+                document.querySelector('.alarm').textContent="Time is Over!"
+                // music.play();
+
+            }
+            setTimeout(Current_Date,1000)//recursion
+        }
+        Current_Date()
+    </script>
+</body>
+</html>
